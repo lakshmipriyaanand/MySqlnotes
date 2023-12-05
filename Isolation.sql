@@ -1,0 +1,28 @@
+set autocommit=0;
+use transaction_processing;
+
+-- READ UNCOMMITTED
+SET TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
+START TRANSACTION;
+select * from sample;
+Commit;
+
+-- READ COMMITTED
+SET TRANSACTION ISOLATION LEVEL READ COMMITTED;
+START TRANSACTION;
+select * from sample;
+Commit;
+
+select * from sample;
+-- REPEATABLE READ
+SET TRANSACTION ISOLATION LEVEL repeatable read;
+START TRANSACTION;
+select * from sample;
+Commit;
+
+
+-- SERIALIZABLE:
+SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;
+START TRANSACTION;
+select * from sample;
+Commit;
